@@ -1,85 +1,134 @@
 {% render 'partials/head.liquid' %}
 
-<!-- Alle personen -> roxy ---------------------------------------------------------------------------------------------------------->
+<!--
+  Alle personen -> roxy --------------------------------------------------------------------------------------------------------
+-->
 <header>
   <ul>
     {% for person in persons %}
-    <li>
-      <a href="/student/{{ person.id }}">
-        <figure>
-          {% if person.mugshot %}
-          <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=500" alt="Profile picture">
-          {% else %}
-          <img src="/images/missing-mugshot.png" alt="No profile picture">
-          {% endif %}
-          <figcaption>
-            {{  person.name }}
-          </figcaption>
-        </figure>
-      </a>
-    </li>
+      <li>
+        <a href="/student/{{ person.id }}">
+          <figure>
+            {% if person.mugshot %}
+              <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=500" alt="Profile picture">
+            {% else %}
+              <img src="/images/missing-mugshot.png" alt="No profile picture">
+            {% endif %}
+            <figcaption>
+              {{ person.name }}
+            </figcaption>
+          </figure>
+        </a>
+      </li>
     {% endfor %}
   </ul>
 </header>
 
-<!-- zoeken, filteren en sorteren -> mohamed ---------------------------------------------------------------------------------------->
+<!--
+  zoeken, filteren en sorteren -> mohamed --------------------------------------------------------------------------------------
+-->
 <section>
-  <!--Zoeken op naam-->
+  <!-- Zoeken op naam -->
   <form method="GET" action="/">
-    <label>
-      Zoek op naam
-      <input type="text" name="name" placeholder="Typ een naam..."/>
-    </label>
+    <form>
+      <h1>Zoek je squad-mate!</h1>
+      <div class="controls">
+        <input type="search" placeholder="Zoek op naam">
+        <div class="filters">
+          <select id="sort-select">
+            <option value="">Sorteren</option>
+            <option value="likes">Aantal likes</option>
+            <option value="az">Naam A-Z</option>
+            <option value="za">Naam Z-A</option>
+            <option value="birthdate">Birthdate</option>
+          </select>
 
-    <button type="submit">Zoeken</button>
-
-    <a href="/" class="reset-link">Reset</a>
+          <select id="filter-select">
+            <option value="">Filter</option>
+            <option value="1I">Squad 1I</option>
+            <option value="1J">Squad 1J</option>
+            <option value="role-student">Student</option>
+            <option value="role-docent">Docent</option>
+          </select>
+        </div>
+      </div>
+    </form>
   </form>
+  {% comment %} style. van zoekbalk tijdelijk in html {% endcomment %}
 
-  <!--filteren-->
-  <!--sorteren-->
+  <style>
+    h1 {
+      font-size: 30px;
+      font-family: sans-serif;
+      font-weight: normal;
+    }
+    input[type='search'],
+    .controls select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid grey;
+      padding: 0 16px;
+    }
 
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 300px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+    .filters select {
+      flex: 1;
+    }
+
+    .controls input {
+      width: 100%;
+    }
+    select:hover,
+    select:focus {
+      background: #dddddd;
+    }
+  </style>
+  <!-- filteren -->
+  <!-- sorteren -->
 </section>
 
 <main>
-<!-- personen kaartjes -> Thomas ----------------------------------------------------------------------------------------------------->
+  <!--
+    personen kaartjes -> Thomas ---------------------------------------------------------------------------------------------------
+  -->
   <ul>
-    <li>
-    </li>
+    <li></li>
   </ul>
 </main>
 
+<!--
+  Dit hebben we van school gekregen
+  <h1>Zet 'm op team {{ teamName }}!</h1>
 
+  <h2>Huidige berichten</h2>
 
+  {% for message in messages %}
+    <p>{{ message.from }}: {{ message.text }} @{{ message.created | date: '%d-%m-%Y %H:%M' }}</p>
+  {% else %}
+    <p>Er zijn nog geen berichten voor dit team.</p>
+  {% endfor %}
 
-
-
-
-
-
-
-
-<!-- Dit hebben we van school gekregen 
-<h1>Zet 'm op team {{ teamName }}!</h1>
-
-<h2>Huidige berichten</h2>
-
-{% for message in messages %}
-  <p>{{ message.from }}: {{ message.text }} @{{ message.created | date: '%d-%m-%Y %H:%M' }}</p>
-{% else %}
-  <p>Er zijn nog geen berichten voor dit team.</p>
-{% endfor %}
-
-<h2>Voeg een bericht toe</h2>
-<form method="post" action="/">
-  <label>
-    Naam:
-    <input type="text" name="from" required>
-  </label>
-  <label>
-    Bericht:
-    <textarea name="text" required></textarea>
-  </label>
-  <button type="submit">Verstuur</button>
-</form>
+  <h2>Voeg een bericht toe</h2>
+  <form method="post" action="/">
+    <label>
+      Naam:
+      <input type="text" name="from" required>
+    </label>
+    <label>
+      Bericht:
+      <textarea name="text" required></textarea>
+    </label>
+    <button type="submit">Verstuur</button>
+  </form>
 -->
