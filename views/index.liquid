@@ -1,5 +1,61 @@
 {% render 'partials/head.liquid' %}
 
+<!-- Alle personen -> roxy ---------------------------------------------------------------------------------------------------------->
+<header>
+  <ul>
+    {% for person in persons %}
+    <li>
+      <figure>
+        {% if person.mugshot %}
+        <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=500" alt="Profile picture">
+        {% else %}
+        <img src="/missing-mugshot.png" alt="No profile picture">
+        {% endif %}
+        <figcaption></figcaption>
+      </figure>
+    </li>
+    {% endfor %}
+  </ul>
+</header>
+
+<!-- zoeken, filteren en sorteren -> mohamed ---------------------------------------------------------------------------------------->
+<section>
+  <!--Zoeken op naam-->
+  <form method="GET" action="/">
+    <label>
+      Zoek op naam
+      <input type="text" name="name" placeholder="Typ een naam..."/>
+    </label>
+
+    <button type="submit">Zoeken</button>
+
+    <a href="/" class="reset-link">Reset</a>
+  </form>
+
+  <!--filteren-->
+  <!--sorteren-->
+
+</section>
+
+<main>
+<!-- personen kaartjes -> Thomas ----------------------------------------------------------------------------------------------------->
+  <ul>
+    <li>
+    </li>
+  </ul>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Dit hebben we van school gekregen 
 <h1>Zet 'm op team {{ teamName }}!</h1>
 
 <h2>Huidige berichten</h2>
@@ -22,3 +78,4 @@
   </label>
   <button type="submit">Verstuur</button>
 </form>
+-->
