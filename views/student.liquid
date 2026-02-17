@@ -1,8 +1,8 @@
 {% render 'partials/head.liquid', title: person.name %}
-<div class="page">
+<main class="page">
   <p><a href="/" class="back" style="--fav-color: {{ person.fav_color }}">&lt; Terug</a></p>
 
-  <div class="Card" style="--fav-color: {{ person.fav_color }}">
+  <article class="Card" style="--fav-color: {{ person.fav_color }}">
     <img
       class="avatar"
       src="{% if person.mugshot %}https://fdnd.directus.app/assets/{{ person.mugshot }}{% else %}/images/missing-mugshot.png{% endif %}"
@@ -10,19 +10,19 @@
       width="300"
     >
     <h2>{{ person.name }}</h2>
-    <p class="squad">Squad {{ squads.name }}</p>
+    <p class="squad">Squad: {{ squads.name }}</p>
 
-    <div class="bericht">
+    <form class="bericht">
       <h3>Laat een bericht achter</h3>
 
       <textarea placeholder="Schrijf je bericht hier..."></textarea>
 
-      <div class="row">
+
         <input type="text" placeholder="Naam">
         <button>Versturen</button>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
+  </form>
+
 
 {% render 'partials/foot.liquid', squads: squads %}
