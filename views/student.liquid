@@ -5,7 +5,7 @@
   <div class="Card" style="--fav-color: {{ person.fav_color }}">
     <img
       class="avatar"
-      src="{% if person.mugshot %}https://fdnd.directus.app/assets/{{ person.mugshot }}{% else %}/images/prop.jpg{% endif %}"
+      src="{% if person.mugshot %}https://fdnd.directus.app/assets/{{ person.mugshot }}{% else %}/images/missing-mugshot.png{% endif %}"
       alt="{{ person.name }}"
       width="300"
     >
