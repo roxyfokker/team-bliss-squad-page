@@ -138,6 +138,7 @@ input {
 }
 
 button {
+.bericht button {
   padding: 0 16px;
   border-radius: 10px;
   border: none;
