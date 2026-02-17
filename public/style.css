@@ -152,9 +152,4 @@ button {
   outline: 2px solid var(--fav-color);
 }
 
-.row input,
-.row button {
-  height: 40px;
-}
-
 /*---- foot.liquid ----*/
