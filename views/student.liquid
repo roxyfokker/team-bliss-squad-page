@@ -12,10 +12,24 @@
     width="300"
   >
   <h1>{{ person.name }}</h1>
-  <p class="squad">Squad: {{ squads.name }}</p>
+  <dl class="card-data">
+    <dt>Leeftijd:</dt>
+    <dd> 
+      {% assign birthyear = person.birthdate | date: "%Y" | plus: 0 %}
+      {% assign currentyear = "now" | date: "%Y" | plus: 0 %}
+      {% assign age = currentyear | minus: birthyear %}
+      {{ age }} jaar
+    </dd>
+
+    <dt>Squad:</dt>
+    <dd>{{ squads.name }}</dd>
+
+    <dt>Bio:</dt>
+    <dd>{{ person.bio }}</dd>
+  </dl>
 </article>
 
-<section class="person-info-blok spotify-container"> <!--https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed-->
+<section class="person-info-blok spotify-container" style="--fav-color: {{ person.fav_color }}"> <!--https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed-->
   <h2>Favoriete spotify track</h2>
   <iframe 
     title="Spotify track embed"
@@ -30,7 +44,7 @@
   </iframe>
 </section>
 
-<section class="person-info-blok plaats-container"><!--https://www.mapembed.org/?gad_source=1&gad_campaignid=22280139497&gclid=CjwKCAiAwNDMBhBfEiwAd7ti1JNtgL4w9qbTDatPDlWFbaFUGsxid2zd25_F8w6DQzf0tUxSX75GbRoCt5kQAvD_BwE-->  
+<section class="person-info-blok plaats-container" style="--fav-color: {{ person.fav_color }}"><!--https://www.mapembed.org/?gad_source=1&gad_campaignid=22280139497&gclid=CjwKCAiAwNDMBhBfEiwAd7ti1JNtgL4w9qbTDatPDlWFbaFUGsxid2zd25_F8w6DQzf0tUxSX75GbRoCt5kQAvD_BwE-->  
   <h2>woonplaats</h2>
   <iframe 
     title="Locatie {{ person.residency }}"
@@ -45,7 +59,7 @@
   <a href="https://funclicker.org" style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:1px;overflow:hidden">Fun Clicker</a>
 </section>
 
-<section class="person-info-blok avatar-container">
+<section class="person-info-blok avatar-container" style="--fav-color: {{ person.fav_color }}">
   <h2>avatar en nickanme</h2>
   <figure>
     <img src="{{  person.avatar  }}" alt="">
@@ -53,14 +67,33 @@
   </figure>
 </section>
 
-<form class="bericht-container" style="--fav-color: {{ person.fav_color }}">
-  <h2>Laat een bericht achter</h2>
-  <label for="bericht-text">Bericht</label>
-  <textarea placeholder="Schrijf je bericht hier..."></textarea>
 
-  <label for="naam"></label>
-  <input type="text" id="naam" name="naam" placeholder="Naam">
-  <button type="submit">Versturen</button>
-</form>
+<section class="berichten-container">
+  <h2>Huidige berichten</h2>
+
+  {% for message in messages %}
+    <p>{{ message.from }}: {{ message.text }} @{{ message.created | date: '%d-%m-%Y %H:%M' }}</p>
+  {% else %}
+    <p>Er zijn nog geen berichten voor deze persoon.</p>
+  {% endfor %}
+
+  <h2>Voeg een bericht toe</h2>
+
+  <form method="post" action="/" class="bericht-container" style="--fav-color: {{ person.fav_color }}">
+    <h2>Laat een bericht achter</h2>
+    <label>
+      Naam:
+      <input type="text" name="from" required placeholder="Schrijf je bericht hier...">
+    </label>
+
+    <label for="bericht">
+      Bericht:
+      <textarea name="text" required></textarea>
+    </label>
+
+    <button type="submit">Versturen</button>
+  </form>
+</section>
+
 
 {% render 'partials/foot.liquid', squads: squads %}

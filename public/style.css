@@ -92,17 +92,7 @@ select:focus {
   gap: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   outline: 0.19rem solid var(--fav-color);
-}
-
-.Card h1 {
-  margin: 0;
   text-align: center;
-}
-
-.squad {
-  margin: 0;
-  text-align: center;
-  color: #64748b;
 }
 
 .avatar {
@@ -110,6 +100,7 @@ select:focus {
   border-radius: 50%;
   outline: 2px solid var(--fav-color);
 }
+
 /*---info blokken-----*/
 
 .person-info-blok{
@@ -119,21 +110,24 @@ select:focus {
   border-radius: var(--border-radius);
   padding: 1rem;
   margin-top: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 /*---berichten -----*/
 
-textarea {
-  height: 100px;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-}
+.bericht-container{
+  textarea {
+    height: 100px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+  }
 
-.bericht {
-  margin-top: 10px;
-  display: grid;
-  gap: 10px;
+  .bericht {
+    margin-top: 10px;
+    display: grid;
+    gap: 10px;
+  }
 }
 
 input {
