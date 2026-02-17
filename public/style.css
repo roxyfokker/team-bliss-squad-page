@@ -80,21 +80,6 @@ select:focus {
 }
 /*---- student.liquid ----*/
 
-h1,
-h2,
-h3,
-p,
-textarea,
-input,
-placeholder {
-  font-family: Inter;
-  font-weight: 300;
-}
-
-h1 {
-  font-size: 2.4rem;
-  margin-bottom: 30px;
-}
 .back {
   position: absolute;
   top: 20px;
