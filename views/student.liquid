@@ -1,26 +1,66 @@
 {% render 'partials/head.liquid', title: person.name %}
-<main class="page">
-  <p><a href="/" class="back" style="--fav-color: {{ person.fav_color }}">&lt; Terug</a></p>
 
-  <article class="Card" style="--fav-color: {{ person.fav_color }}">
-    <img
-      class="avatar"
-      src="{% if person.mugshot %}https://fdnd.directus.app/assets/{{ person.mugshot }}{% else %}/images/missing-mugshot.png{% endif %}"
-      alt="{{ person.name }}"
-      width="300"
-    >
-    <h2>{{ person.name }}</h2>
-    <p class="squad">Squad: {{ squads.name }}</p>
+<nav>
+  <a href="/">&lt; Terug
+</nav>
 
-    <form class="bericht" style="--fav-color: {{ person.fav_color }}">
-      <h3>Laat een bericht achter</h3>
+<article class="Card" style="--fav-color: {{ person.fav_color }}">
+  <img
+    class="avatar"
+    src="{% if person.mugshot %}https://fdnd.directus.app/assets/{{ person.mugshot }}{% else %}/images/missing-mugshot.png{% endif %}"
+    alt="{{ person.name }}"
+    width="300"
+  >
+  <h1>{{ person.name }}</h1>
+  <p class="squad">Squad: {{ squads.name }}</p>
+</article>
 
-      <textarea placeholder="Schrijf je bericht hier..."></textarea>
+<section class="person-info-blok spotify-container"> <!--https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed-->
+  <h2>Favoriete spotify track</h2>
+  <iframe 
+    title="Spotify track embed"
+    data-testid="embed-iframe" 
+    style="border-radius:12px" 
+    src="https://open.spotify.com/embed/track/{{ track_id  | default: '7qBNJBQJJjQjYFZlP3IPhK?si=635574fedc974a50' }}" 
+    width="100%" height="352" 
+    frameBorder="0" 
+    allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+  </iframe>
+</section>
 
-      <input type="text" placeholder="Naam">
-      <button>Versturen</button>
-    </form>
-  </article>
-</main>
+<section class="person-info-blok plaats-container"><!--https://www.mapembed.org/?gad_source=1&gad_campaignid=22280139497&gclid=CjwKCAiAwNDMBhBfEiwAd7ti1JNtgL4w9qbTDatPDlWFbaFUGsxid2zd25_F8w6DQzf0tUxSX75GbRoCt5kQAvD_BwE-->  
+  <h2>woonplaats</h2>
+  <iframe 
+    title="Locatie {{ person.residency }}"
+    class="embed-map-frame" 
+    frameborder="0" 
+    scrolling="no" 
+    marginheight="0" 
+    marginwidth="0" 
+    src="https://maps.google.com/maps?width=600&height=400&hl=en&q={{ person.residency | url_escape }}&t=&z=14&ie=UTF8&iwloc=B&output=embed">
+    <!--https://shopify.dev/docs/api/liquid/filters/url_escape-->
+  </iframe>
+  <a href="https://funclicker.org" style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:1px;overflow:hidden">Fun Clicker</a>
+</section>
+
+<section class="person-info-blok avatar-container">
+  <h2>avatar en nickanme</h2>
+  <figure>
+    <img src="{{  person.avatar  }}" alt="">
+    <figcaption>{{  person.nickname  }}</figcaption>
+  </figure>
+</section>
+
+<form class="bericht-container" style="--fav-color: {{ person.fav_color }}">
+  <h2>Laat een bericht achter</h2>
+  <label for="bericht-text">Bericht</label>
+  <textarea placeholder="Schrijf je bericht hier..."></textarea>
+
+  <label for="naam"></label>
+  <input type="text" id="naam" name="naam" placeholder="Naam">
+  <button type="submit">Versturen</button>
+</form>
 
 {% render 'partials/foot.liquid', squads: squads %}
