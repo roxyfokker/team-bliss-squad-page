@@ -12,9 +12,8 @@ const params = {
   "filter[tribe][name]": "FDND Jaar 1",
 };
 
-const squadResponse = await fetch(
-  "https://fdnd.directus.app/items/squad?" + new URLSearchParams(params),
-);
+const squadResponse = await fetch("https://fdnd.directus.app/items/squad?" + new URLSearchParams(params),);
+
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
 const squadResponseJSON = await squadResponse.json();
 
@@ -28,39 +27,30 @@ app.set("views", "./views");
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async function (request, response) {
-  // Filter eerst de berichten die je wilt zien, net als bij personen
-  // Deze tabel wordt gedeeld door iedereen, dus verzin zelf een handig filter,
-  // bijvoorbeeld je teamnaam, je projectnaam, je person ID, de datum van vandaag, etc..
   const params = {
-    "filter[for]": `Team ${teamName}`,
+    'fields': '*,squads.*',
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    'filter[squads][squad_id][cohort]': '2526',
   };
 
-  // Maak hiermee de URL aan, zoals we dat ook in de browser deden
-  const apiURL =
-    "https://fdnd.directus.app/items/messages?" + new URLSearchParams(params);
+  // sorteren
+  if (request.query.sort) {
+    params.sort = request.query.sort;
+  }
 
-  // Laat eventueel zien wat de filter URL is
-  // (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
-  // console.log('API URL voor messages:', apiURL)
+  // filteren
+  if (request.query['filter[squads][squad_id][_eq]']) {
+    params['filter[squads][squad_id][_eq]'] = request.query['filter[squads][squad_id][_eq]'];
+  }
 
-  // Haal daarna de messages data op
-  const messagesResponse = await fetch(apiURL);
+  // zoeken
+  if (request.query.name) {
+    params['filter[name][_icontains]'] = request.query.name
+  }
 
-  // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
-  const messagesResponseJSON = await messagesResponse.json();
-
-  const personResponse = await fetch("https://fdnd.directus.app/items/person");
-  const personResponseJSON = await personResponse.json();
-
-  // Controleer eventueel de data in je console
-  // console.log(messagesResponseJSON)
-
-  // En render de view met de messages
-  response.render("index.liquid", {
-    teamName: teamName,
-    messages: messagesResponseJSON.data,
-    persons: personResponseJSON.data,
-  });
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+  const personResponseJSON = await personResponse.json()
+  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
 });
 
 app.post("/", async function (request, response) {

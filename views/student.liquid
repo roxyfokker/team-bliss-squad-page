@@ -22,7 +22,13 @@
     </dd>
 
     <dt>Squad:</dt>
-    <dd>{{ squads.name }}</dd>
+    <dd>{{ person.squad }}</dd>
+
+    <dt>Role:</dt>
+    <dd>{% for r in person.role %}
+    {{ r.role_id.name }}
+  {% endfor %}
+    </dd>
 
     <dt>Bio:</dt>
     <dd>{{ person.bio }}</dd>
@@ -35,7 +41,7 @@
     title="Spotify track embed"
     data-testid="embed-iframe" 
     style="border-radius:12px" 
-    src="https://open.spotify.com/embed/track/{{ track_id  | default: '7qBNJBQJJjQjYFZlP3IPhK?si=635574fedc974a50' }}" 
+    src="https://open.spotify.com/embed/track/{{ track_id | default: '7qBNJBQJJjQjYFZlP3IPhK?si=635574fedc974a50' }}?utm_source=generator" 
     width="100%" height="352" 
     frameBorder="0" 
     allowfullscreen="" 

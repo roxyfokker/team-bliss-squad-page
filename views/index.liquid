@@ -24,40 +24,54 @@
   </ul>
 </header>
 
+
+<!--
+  sorteren en filteren werkend
+-->
+<a href="/?sort=name">Sorteer A-Z</a>
+<a href="/?sort=-name">Sorteer Z_A</a>
+<a href="/?sort=birthdate">Sorteer op geboortedatum</a>
+<a href="/?sort=-birthdate">Sorteer op geboortedatum</a>
+
+<a href="/?filter[squads][squad_id][_eq]=16">filteren 1I</a>
+<a href="/?filter[squads][squad_id][_eq]=17">filteren 1J</a>
+
+
 <!--
   zoeken, filteren en sorteren -> mohamed --------------------------------------------------------------------------------------
 -->
+
 <section>
   <!-- Zoeken op naam -->
+  <h1>Zoek je squad-mate!</h1>
+
   <form method="GET" action="/">
-    <form>
-      <h1>Zoek je squad-mate!</h1>
-      <div class="controls">
-        <input type="search" placeholder="Zoek op naam">
-        <div class="filters">
-          <select id="sort-select">
-            <option value="">Sorteren</option>
-            <option value="likes">Aantal likes</option>
-            <option value="az">Naam A-Z</option>
-            <option value="za">Naam Z-A</option>
-            <option value="birthdate">Birthdate</option>
-          </select>
+      <label>
+        Zoek op naam
+        <input type="text" name="name" placeholder="Zoek op naam">
+      </label>
+  </form>  
 
-          <select id="filter-select">
-            <option value="">Filter</option>
-            <option value="1I">Squad 1I</option>
-            <option value="1J">Squad 1J</option>
-            <option value="role-student">Student</option>
-            <option value="role-docent">Docent</option>
-          </select>
-        </div>
-      </div>
-    </form>
-  </form>
-
-  <style></style>
-  <!-- filteren -->
-  <!-- sorteren -->
+  <div class="controls">
+    <div class="filters">
+      <!-- sorteren -->
+      <select id="sort-select">
+        <option value="/?sort=name">Naam A-Z</option>
+        <option value="/?sort=-name">Naam Z-A</option>
+        <option value="/?sort=birthdate">Birthdate</option>
+        <option value="/?sort=-birthdate">Birthdate</option>
+        <option value="">Aantal likes</option>
+      </select>
+      <!-- filteren -->
+      <select id="filter-select">
+        <option value="/?filter[squads][squad_id][_eq]=16">Squad 1I</option>
+        <option value="/?filter[squads][squad_id][_eq]=17">Squad 1J</option>
+        <option value="">Student</option>
+        <option value="">Docent</option>
+      </select>
+    </div> 
+  </div>
+  
 </section>
 
 <main>
@@ -101,29 +115,3 @@
       </ul>
     </section>
 </main>
-
-<!--
-  Dit hebben we van school gekregen
-  <h1>Zet 'm op team {{ teamName }}!</h1>
-
-  <h2>Huidige berichten</h2>
-
-  {% for message in messages %}
-    <p>{{ message.from }}: {{ message.text }} @{{ message.created | date: '%d-%m-%Y %H:%M' }}</p>
-  {% else %}
-    <p>Er zijn nog geen berichten voor dit team.</p>
-  {% endfor %}
-
-  <h2>Voeg een bericht toe</h2>
-  <form method="post" action="/">
-    <label>
-      Naam:
-      <input type="text" name="from" required>
-    </label>
-    <label>
-      Bericht:
-      <textarea name="text" required></textarea>
-    </label>
-    <button type="submit">Verstuur</button>
-  </form>
--->
