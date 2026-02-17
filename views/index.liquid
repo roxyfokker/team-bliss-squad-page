@@ -64,9 +64,42 @@
   <!--
     personen kaartjes -> Thomas ---------------------------------------------------------------------------------------------------
   -->
-  <ul>
-    <li></li>
-  </ul>
+    <section>
+      <ul class="squad-list">
+        {% for person in persons %}
+          <li>
+            <article class="member" style="border-top: 3px solid {{ person.fav_color }};">
+              <!-- Header -->
+              <ul class="member-header">
+                <li class="header-avatar">
+                  <img src="{{ person.avatar }}" alt="{{ person.name }}" class="profile-pic">
+                </li>
+                <li class="header-info">
+                  <h3>{{ person.name }}</h3>
+                  {% if filterBy == 'birthdate' and person.daysUntilBirthday %}
+                    <p class="birthday-countdown">{{ person.daysUntilBirthday }} dagen tot verjaardag</p>
+                  {% endif %}
+                </li>
+              </ul>
+              
+              <!-- Content -->
+              <ul class="member-content">
+                <li>
+                  <img src="{{ person.avatar }}" alt="{{ person.name }}" class="content-image">
+                </li>
+              </ul>
+              
+              <!-- Actions -->
+              <ul class="member-actions">
+                <li><button class="action-btn like-btn">👍</button></li>
+                <li><button class="action-btn comment-btn">💬</button></li>
+                <li><a href="/student/{{ person.id }}" class="action-btn meer-btn">See more...</a></li>
+              </ul>
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
 </main>
 
 <!--
