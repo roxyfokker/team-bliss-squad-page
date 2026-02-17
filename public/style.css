@@ -147,4 +147,171 @@ input {
   height: 30px;
 }
 
+.avatar {
+  margin: 10px auto;
+  border-radius: 50%;
+  outline: 2px solid var(--fav-color);
+}
+
+/* Squad list  */
+.squad-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 20px;
+  margin: 10px auto;
+  justify-items: center;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.squad-list li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+
+/* Member card */
+.member {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 300px;
+}
+
+
+.member:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Header card */
+.member-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  list-style: none;
+}
+
+.header-avatar {
+  flex-shrink: 0;
+}
+
+.member-header .profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-info {
+  flex: 1;
+}
+
+.header-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.header-info .birthday-countdown {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: #999;
+}
+
+/* Content */
+.member-content {
+  width: 100%;
+  overflow: hidden;
+  background: #f5f5f5;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.member-content li {
+  width: 100%;
+}
+
+.member-content .content-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* knoppen section */
+.member-actions {
+  display: flex;
+  gap: 0;
+  padding: 8px;
+  border-top: 1px solid #e0e0e0;
+  list-style: none;
+  margin: 0;
+}
+
+.member-actions li {
+  flex: 1;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  transition: background-color 0.2s;
+  border-radius: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.action-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/*---- responsiveness ----*/
+@media (min-width: 768px) {
+  .squad-list {
+    grid-template-columns: repeat(2, 300px);
+    max-width: 650px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .squad-list {
+    grid-template-columns: repeat(3, 300px);
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .squad-list {
+    grid-template-columns: repeat(4, 300px);
+    max-width: 1270px;
+  }
+}
+
+
+
 /*---- foot.liquid ----*/
