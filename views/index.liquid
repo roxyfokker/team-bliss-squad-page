@@ -28,6 +28,7 @@
 
     <select
       id="sort-select"
+      onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
     >
       <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->
       <option
