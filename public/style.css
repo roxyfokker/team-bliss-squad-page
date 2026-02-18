@@ -66,6 +66,14 @@ input[type="search"],
   @media (min-width: 678px) {
     max-width: 615px;
   }
+
+  @media (min-width: 1024px) {
+    max-width: 930px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1240px;
+  }
 }
 
 label {
