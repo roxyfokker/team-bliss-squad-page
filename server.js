@@ -12,7 +12,9 @@ const params = {
   "filter[tribe][name]": "FDND Jaar 1",
 };
 
-const squadResponse = await fetch("https://fdnd.directus.app/items/squad?" + new URLSearchParams(params),);
+const squadResponse = await fetch(
+  "https://fdnd.directus.app/items/squad?" + new URLSearchParams(params),
+);
 
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
 const squadResponseJSON = await squadResponse.json();
@@ -28,9 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async function (request, response) {
   const params = {
-    'fields': '*,squads.*',
-    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
-    'filter[squads][squad_id][cohort]': '2526',
+    fields: "*,squads.*",
+    "filter[squads][squad_id][tribe][name]": "FDND Jaar 1",
+    "filter[squads][squad_id][cohort]": "2526",
   };
 
   // sorteren
@@ -39,18 +41,25 @@ app.get("/", async function (request, response) {
   }
 
   // filteren
-  if (request.query['filter[squads][squad_id][_eq]']) {
-    params['filter[squads][squad_id][_eq]'] = request.query['filter[squads][squad_id][_eq]'];
+  if (request.query["filter[squads][squad_id][_eq]"]) {
+    params["filter[squads][squad_id][_eq]"] =
+      request.query["filter[squads][squad_id][_eq]"];
   }
 
   // zoeken
   if (request.query.name) {
-    params['filter[name][_icontains]'] = request.query.name
+    params["filter[name][_icontains]"] = request.query.name;
   }
 
-  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
-  const personResponseJSON = await personResponse.json()
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data currentSort: request.query.sort || "",})
+  const personResponse = await fetch(
+    "https://fdnd.directus.app/items/person/?" + new URLSearchParams(params),
+  );
+  const personResponseJSON = await personResponse.json();
+  response.render("index.liquid", {
+    persons: personResponseJSON.data,
+    squads: squadResponseJSON.data,
+    currentSort: request.query.sort || "",
+  });
 });
 
 app.post("/", async function (request, response) {
@@ -108,39 +117,36 @@ app.get("/student/:id", async function (request, response) {
   });
 });
 
-
 // berichten achter laten
-app.get('/berichten', async function (request, response) {
+app.get("/berichten", async function (request, response) {
   const messageParams = {
-    'filter[for]': 'bliss-demo'
-  }
+    "filter[for]": "bliss-demo",
+  };
 
-  const apiURL ='https://fdnd.directus.app/items/messages?' + new URLSearchParams(messageParams)
-  const messagesResponse = await fetch(apiURL)
-  const messagesResponseJSON = await messagesResponse.json()
-  const messages = messagesResponseJSON.data
+  const apiURL =
+    "https://fdnd.directus.app/items/messages?" +
+    new URLSearchParams(messageParams);
+  const messagesResponse = await fetch(apiURL);
+  const messagesResponseJSON = await messagesResponse.json();
+  const messages = messagesResponseJSON.data;
 
-  response.render('message.liquid', { messages });
+  response.render("message.liquid", { messages });
 });
 
-
-
-app.post('/berichten', async function(request, response) {
-  
-  await fetch('https://fdnd.directus.app/items/messages', {
-    method: 'POST',
+app.post("/berichten", async function (request, response) {
+  await fetch("https://fdnd.directus.app/items/messages", {
+    method: "POST",
 
     body: JSON.stringify({
-      for: 'bliss-demo',
-      from: request.body['message-from'],
-      text: request.body['message-text']
+      for: "bliss-demo",
+      from: request.body["message-from"],
+      text: request.body["message-text"],
     }),
 
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
 
-  })
-
-  response.redirect('/berichten')
-})
+  response.redirect("/berichten");
+});
