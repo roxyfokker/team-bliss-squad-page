@@ -47,7 +47,7 @@
           Naam Z-A
         </option>
         <option
-          value="/birthdate"
+          value="birthdate"
           {% if currentSort == 'birthdate' %}
             selected
           {% endif %}
@@ -55,7 +55,7 @@
           Oudste
         </option>
         <option
-          value="/-birthdate"
+          value="-birthdate"
           {% if currentSort == '-birthdate' %}
             selected
           {% endif %}
@@ -73,7 +73,7 @@
       >
         <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->
         <option
-          value="/?filter[squads][squad_id][_eq]=16"
+          value="16"
           {% if currentSquad == '16' %}
             selected
           {% endif %}
@@ -81,7 +81,7 @@
           Squad 1I
         </option>
         <option
-          value="/?filter[squads][squad_id][_eq]=17"
+          value="17"
           {% if currentSquad == '17' %}
             selected
           {% endif %}
