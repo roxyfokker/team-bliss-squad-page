@@ -344,7 +344,37 @@ input {
     max-width: 1270px;
   }
 }
-
+/*---- berichtenbord ----*/
+.berichten-child-container{
+  border: 0.19rem solid var(--fav-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 80vw;
+  margin: 2rem auto;
+  background-color: lightgrey;
+  h2{
+    margin-bottom: 1rem;
+  }
+  li{
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: whitesmoke;
+  }
+}
+.berichten-container{
+  label{
+    display: flex;
+    margin-top: 1rem;
+  }
+  button{
+    background-color: grey;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
 /*---- foot.liquid ----*/
 footer {
   padding: 1rem;
