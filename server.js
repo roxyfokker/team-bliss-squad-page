@@ -50,7 +50,7 @@ app.get("/", async function (request, response) {
 
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
   const personResponseJSON = await personResponse.json()
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data currentSort: request.query.sort || "",})
 });
 
 app.post("/", async function (request, response) {
