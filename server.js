@@ -59,6 +59,7 @@ app.get("/", async function (request, response) {
     persons: personResponseJSON.data,
     squads: squadResponseJSON.data,
     currentSort: request.query.sort || "",
+    currentSquad: request.query["filter[squads][squad_id][_eq]"] || "",
   });
 });
 
