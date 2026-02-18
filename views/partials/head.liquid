@@ -7,3 +7,28 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>  
+
+  <!--
+    Alle personen -> roxy --------------------------------------------------------------------------------------------------------
+  -->
+
+  <header>
+    <ul>
+      {% for person in persons %}
+        <li>
+          <a href="/student/{{ person.id }}">
+            <figure>
+              {% if person.mugshot %}
+                <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=500" alt="Profile picture">
+              {% else %}
+                <img src="/images/missing-mugshot.png" alt="No profile picture">
+              {% endif %}
+              <figcaption>
+                {{ person.name }}
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </header>
