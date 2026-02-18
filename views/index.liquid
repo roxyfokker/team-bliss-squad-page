@@ -31,10 +31,38 @@
       onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
     >
       <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->
-      <option value="/?sort=name">Naam A-Z</option>
-      <option value="/?sort=-name">Naam Z-A</option>
-      <option value="/?sort=birthdate">Oudste</option>
-      <option value="/?sort=-birthdate">Jongste</option>
+      <option
+        value="/?sort=name"
+        {% if currentSort == 'name' %}
+          selected
+        {% endif %}
+      >
+        Naam A-Z
+      </option>
+      <option
+        value="/?sort=-name"
+        {% if currentSort == '-name' %}
+          selected
+        {% endif %}
+      >
+        Naam Z-A
+      </option>
+      <option
+        value="/?sort=birthdate"
+        {% if currentSort == 'birthdate' %}
+          selected
+        {% endif %}
+      >
+        Jongste
+      </option>
+      <option
+        value="/?sort=-birthdate"
+        {% if currentSort == '-birthdate' %}
+          selected
+        {% endif %}
+      >
+        Jongste
+      </option>
       <option value="">Meeste likes</option>
       <option value="">Minste likes</option>
     </select>
