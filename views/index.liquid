@@ -22,17 +22,18 @@
     <form method="GET" action="/">
       <label>
         Zoek op naam
-        <input type="text" name="name" placeholder="Zoek op naam">
+        <input type="text" name="search" placeholder="Zoek op naam">
       </label>
     </form>
 
     <select
       id="sort-select"
+      name="sort"
       onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
     >
       <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->
       <option
-        value="/?sort=name"
+        value="name"
         {% if currentSort == 'name' %}
           selected
         {% endif %}
@@ -40,7 +41,7 @@
         Naam A-Z
       </option>
       <option
-        value="/?sort=-name"
+        value="-name"
         {% if currentSort == '-name' %}
           selected
         {% endif %}
@@ -48,7 +49,7 @@
         Naam Z-A
       </option>
       <option
-        value="/?sort=birthdate"
+        value="/birthdate"
         {% if currentSort == 'birthdate' %}
           selected
         {% endif %}
@@ -56,7 +57,7 @@
         Oudste
       </option>
       <option
-        value="/?sort=-birthdate"
+        value="/-birthdate"
         {% if currentSort == '-birthdate' %}
           selected
         {% endif %}
@@ -70,6 +71,7 @@
     <!-- filteren -->
     <select
       id="filter-select"
+      name="squad"
       onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
     >
       <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->

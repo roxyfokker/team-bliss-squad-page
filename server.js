@@ -41,14 +41,13 @@ app.get("/", async function (request, response) {
   }
 
   // filteren
-  if (request.query["filter[squads][squad_id][_eq]"]) {
-    params["filter[squads][squad_id][_eq]"] =
-      request.query["filter[squads][squad_id][_eq]"];
+  if (request.query.squad) {
+    params["filter[squads][squad_id][_eq]"] = request.query.squad;
   }
 
   // zoeken
-  if (request.query.name) {
-    params["filter[name][_icontains]"] = request.query.name;
+  if (request.query.search) {
+    params["filter[name][_icontains]"] = request.query.search;
   }
 
   const personResponse = await fetch(
@@ -59,7 +58,7 @@ app.get("/", async function (request, response) {
     persons: personResponseJSON.data,
     squads: squadResponseJSON.data,
     currentSort: request.query.sort || "",
-    currentSquad: request.query["filter[squads][squad_id][_eq]"] || "",
+    currentSquad: request.query.squad || "",
   });
 });
 
