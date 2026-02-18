@@ -107,3 +107,40 @@ app.get("/student/:id", async function (request, response) {
     squads: squadResponseJSON.data,
   });
 });
+
+
+// berichten achter laten
+app.get('/berichten', async function (request, response) {
+  const messageParams = {
+    'filter[for]': 'bliss-demo'
+  }
+
+  const apiURL ='https://fdnd.directus.app/items/messages?' + new URLSearchParams(messageParams)
+  const messagesResponse = await fetch(apiURL)
+  const messagesResponseJSON = await messagesResponse.json()
+  const messages = messagesResponseJSON.data
+
+  response.render('message.liquid', { messages });
+});
+
+
+
+app.post('/berichten', async function(request, response) {
+  
+  await fetch('https://fdnd.directus.app/items/messages', {
+    method: 'POST',
+
+    body: JSON.stringify({
+      for: 'bliss-demo',
+      from: request.body['message-from'],
+      text: request.body['message-text']
+    }),
+
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+
+  })
+
+  response.redirect('/berichten')
+})

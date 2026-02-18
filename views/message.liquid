@@ -1,0 +1,32 @@
+{% render 'partials/head.liquid', title: person.name %}
+
+<nav>
+  <a href="/">&lt; Terug</a>
+</nav>
+
+<section class="berichten-container">
+    <!--Berichten die binnen komne-->
+    <h2>Huidige berichten</h2>
+    <ol>
+        {% for message in messages %}
+        <li>
+            <strong>{{ message.from }}:</strong>{{ message.text }}
+        </li>
+        {%endfor %}
+    </ol>
+
+    <!--formulier om bericht toe te voegen-->
+    <h2>Voeg een bericht toe</h2>
+    <form method="POST" action="/berichten" class="bericht-container">
+        <label>
+            Naam:
+            <input type="text" name="message-from" placeholder="typ je naam ..." required>    
+        </label>
+        <label>
+            Bericht:
+            <input type="text" name="message-text" placeholder="typ je bericht ..." required>
+        </label>
+        <button type="submit">Verstuur</button>
+    </form>
+</section>
+

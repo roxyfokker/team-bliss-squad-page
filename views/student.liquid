@@ -74,32 +74,4 @@
 </section>
 
 
-<section class="berichten-container">
-  <h2>Huidige berichten</h2>
-
-  {% for message in messages %}
-    <p>{{ message.from }}: {{ message.text }} @{{ message.created | date: '%d-%m-%Y %H:%M' }}</p>
-  {% else %}
-    <p>Er zijn nog geen berichten voor deze persoon.</p>
-  {% endfor %}
-
-  <h2>Voeg een bericht toe</h2>
-
-  <form method="post" action="/" class="bericht-container" style="--fav-color: {{ person.fav_color }}">
-    <h2>Laat een bericht achter</h2>
-    <label>
-      Naam:
-      <input type="text" name="from" required placeholder="Schrijf je bericht hier...">
-    </label>
-
-    <label for="bericht">
-      Bericht:
-      <textarea name="text" required></textarea>
-    </label>
-
-    <button type="submit">Versturen</button>
-  </form>
-</section>
-
-
 {% render 'partials/foot.liquid', squads: squads %}

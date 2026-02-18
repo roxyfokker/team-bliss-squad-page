@@ -315,3 +315,12 @@ input {
 
 
 /*---- foot.liquid ----*/
+footer{
+  padding: 1rem;
+  text-align: center;
+  margin-top: 4rem;
+  a{
+    font-size: 2rem;
+    text-decoration: underline;
+  }
+}
