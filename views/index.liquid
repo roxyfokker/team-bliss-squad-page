@@ -11,48 +11,46 @@
 <a href="/?filter[squads][squad_id][_eq]=16">filteren 1I</a>
 <a href="/?filter[squads][squad_id][_eq]=17">filteren 1J</a>
 
-
-<!--
+<main>
+  <!--
   zoeken, filteren en sorteren -> mohamed --------------------------------------------------------------------------------------
 -->
 
-<section>
-  <!-- Zoeken op naam -->
-  <h1>Zoek je squad-mate!</h1>
+  <section>
+    <!-- Zoeken op naam -->
+    <h1>Zoek je squad-mate!</h1>
 
-  <form method="GET" action="/">
-      <label>
-        Zoek op naam
-        <input type="text" name="name" placeholder="Zoek op naam">
-      </label>
-  </form>  
+    <form method="GET" action="/">
+        <label>
+          Zoek op naam
+          <input type="text" name="name" placeholder="Zoek op naam">
+        </label>
+    </form>  
 
-  <div class="controls">
-    <div class="filters">
-      <!-- sorteren -->
-      
-      <select id="sort-select" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" ><!--https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box-->
-        <option value="/?sort=name">Naam A-Z</option>
-        <option value="/?sort=-name">Naam Z-A</option>
-        <option value="/?sort=birthdate">Birthdate</option>
-        <option value="/?sort=-birthdate">Birthdate</option>
-        <option value="">Meeste likes</option>
-        <option value="">Minste likes</option>
-      </select>
-      
-      <!-- filteren -->
-      <select id="filter-select" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"><!--https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box-->
-        <option value="/?filter[squads][squad_id][_eq]=16">Squad 1I</option>
-        <option value="/?filter[squads][squad_id][_eq]=17">Squad 1J</option>
-        <option value="">Student</option>
-        <option value="">Docent</option>
-      </select>
-    </div> 
-  </div>
-  
-</section>
-
-<main>
+    <div class="controls">
+      <div class="filters">
+        <!-- sorteren -->
+        
+        <select id="sort-select" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" ><!--https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box-->
+          <option value="/?sort=name">Naam A-Z</option>
+          <option value="/?sort=-name">Naam Z-A</option>
+          <option value="/?sort=birthdate">Birthdate</option>
+          <option value="/?sort=-birthdate">Birthdate</option>
+          <option value="">Meeste likes</option>
+          <option value="">Minste likes</option>
+        </select>
+        
+        <!-- filteren -->
+        <select id="filter-select" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"><!--https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box-->
+          <option value="/?filter[squads][squad_id][_eq]=16">Squad 1I</option>
+          <option value="/?filter[squads][squad_id][_eq]=17">Squad 1J</option>
+          <option value="">Student</option>
+          <option value="">Docent</option>
+        </select>
+      </div> 
+    </div>
+    
+  </section>
   <!--
     personen kaartjes -> Thomas ---------------------------------------------------------------------------------------------------
   -->
