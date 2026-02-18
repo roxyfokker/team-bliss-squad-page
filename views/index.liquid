@@ -24,76 +24,76 @@
         Zoek op naam
         <input type="text" name="search" placeholder="Zoek op naam">
       </label>
+
+      <select
+        id="sort-select"
+        name="sort"
+      >
+        <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->
+        <option
+          value="name"
+          {% if currentSort == 'name' %}
+            selected
+          {% endif %}
+        >
+          Naam A-Z
+        </option>
+        <option
+          value="-name"
+          {% if currentSort == '-name' %}
+            selected
+          {% endif %}
+        >
+          Naam Z-A
+        </option>
+        <option
+          value="/birthdate"
+          {% if currentSort == 'birthdate' %}
+            selected
+          {% endif %}
+        >
+          Oudste
+        </option>
+        <option
+          value="/-birthdate"
+          {% if currentSort == '-birthdate' %}
+            selected
+          {% endif %}
+        >
+          Jongste
+        </option>
+        <option value="">Meeste likes</option>
+        <option value="">Minste likes</option>
+      </select>
+
+      <!-- filteren -->
+      <select
+        id="filter-select"
+        name="squad"
+        onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
+      >
+        <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->
+        <option
+          value="/?filter[squads][squad_id][_eq]=16"
+          {% if currentSquad == '16' %}
+            selected
+          {% endif %}
+        >
+          Squad 1I
+        </option>
+        <option
+          value="/?filter[squads][squad_id][_eq]=17"
+          {% if currentSquad == '17' %}
+            selected
+          {% endif %}
+        >
+          Squad 1J
+        </option>
+        <option value="">Student</option>
+        <option value="">Docent</option>
+      </select>
+      <button type="submit">Submit</button>
     </form>
-
-    <select
-      id="sort-select"
-      name="sort"
-      onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
-    >
-      <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->
-      <option
-        value="name"
-        {% if currentSort == 'name' %}
-          selected
-        {% endif %}
-      >
-        Naam A-Z
-      </option>
-      <option
-        value="-name"
-        {% if currentSort == '-name' %}
-          selected
-        {% endif %}
-      >
-        Naam Z-A
-      </option>
-      <option
-        value="/birthdate"
-        {% if currentSort == 'birthdate' %}
-          selected
-        {% endif %}
-      >
-        Oudste
-      </option>
-      <option
-        value="/-birthdate"
-        {% if currentSort == '-birthdate' %}
-          selected
-        {% endif %}
-      >
-        Jongste
-      </option>
-      <option value="">Meeste likes</option>
-      <option value="">Minste likes</option>
-    </select>
-
-    <!-- filteren -->
-    <select
-      id="filter-select"
-      name="squad"
-      onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
-    >
-      <!-- https://stackoverflow.com/questions/7562095/redirect-on-select-option-in-select-box -->
-      <option
-        value="/?filter[squads][squad_id][_eq]=16"
-        {% if currentSquad == '16' %}
-          selected
-        {% endif %}
-      >
-        Squad 1I
-      </option>
-      <option
-        value="/?filter[squads][squad_id][_eq]=17"
-        {% if currentSquad == '17' %}
-          selected
-        {% endif %}
-      >
-        Squad 1J
-      </option>
-      <option value="">Student</option>
-      <option value="">Docent</option>
-    </select>
   </section>
 
   <!--
