@@ -150,6 +150,11 @@ header {
 
 /*-------------------------- student.liquid -----------------------------*/
 /*---card-----*/
+.nav-terug{
+  margin: 2rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
 
 .Card {
   width: 80vw;
