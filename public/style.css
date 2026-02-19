@@ -102,9 +102,16 @@ button[type="submit"] {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    transform 0.1s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 149, 246, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 149, 246, 0.25);
+  }
   grid-row: 3;
   grid-column: 1 / -1;
 }
@@ -360,7 +367,7 @@ input {
   }
 }
 /*---- berichtenbord ----*/
-.berichten-child-container{
+.berichten-child-container {
   border: 0.19rem solid var(--fav-color);
   border-radius: var(--border-radius);
   padding: 1rem;
@@ -368,21 +375,21 @@ input {
   width: 80vw;
   margin: 2rem auto;
   background-color: lightgrey;
-  h2{
+  h2 {
     margin-bottom: 1rem;
   }
-  li{
+  li {
     margin: 1rem 0;
     padding: 1rem;
     background-color: whitesmoke;
   }
 }
-.berichten-container{
-  label{
+.berichten-container {
+  label {
     display: flex;
     margin-top: 1rem;
   }
-  button{
+  button {
     background-color: grey;
     padding: 1rem;
     border-radius: 1rem;
