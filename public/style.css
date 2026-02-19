@@ -56,13 +56,13 @@ input[type="search"],
   padding: 0 16px;
 }
 
-.controls {
+form {
   display: grid;
   gap: 12px;
   max-width: 300px;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.6fr 1fr 0.5fr;
+  grid-template-rows: 0.6fr 0.5fr 0.5fr;
   @media (min-width: 678px) {
     max-width: 615px;
   }
@@ -82,6 +82,9 @@ label {
   gap: 6px;
   justify-content: center;
   align-self: center;
+
+  grid-row: 1;
+  grid-column: 1 / 3;
 }
 
 .controls h1 {
@@ -91,19 +94,31 @@ label {
 
 .controls form {
   width: 100%;
-  grid-row: 2;
-  grid-column: 1 / 3;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  background-color: #0095f6;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+  grid-row: 3;
+  grid-column: 1 / -1;
 }
 
 select[id="sort-select"] {
-  grid-row: 3;
+  grid-row: 2;
   grid-column: 1 / 2;
 }
 
 select[id="filter-select"] {
-  grid-row: 3;
+  grid-row: 2;
   grid-column: 2 / -1;
 }
+
 select:hover,
 select:focus {
   background: #dddddd;
