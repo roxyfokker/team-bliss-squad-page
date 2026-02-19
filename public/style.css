@@ -43,7 +43,6 @@ header {
 
 /* zoek balk */
 
-h1 {
 .controls h1 {
   font-size: 30px;
   font-family: sans-serif;
@@ -57,6 +56,7 @@ input[type="search"],
   border-radius: 12px;
   border: 1px solid grey;
   padding: 0 16px;
+  padding: 0 8px;
 }
 
 form {
@@ -88,6 +88,10 @@ label {
 
   grid-row: 1;
   grid-column: 1 / 3;
+}
+
+.label-text {
+  display: none;
 }
 
 .controls h1 {
