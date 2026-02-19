@@ -1,3 +1,6 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
 /*---- algemeene styling ----*/
 * {
   margin: 0;
@@ -45,10 +48,14 @@ header {
 
 .controls h1 {
   font-size: 30px;
-  font-family: sans-serif;
-  font-weight: normal;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
   text-align: center;
   padding-bottom: 10px;
+  letter-spacing: -0.5px;
+
+  grid-row: 1;
+  grid-column: 1 / -1;
 }
 input[type="search"],
 .controls select {
@@ -91,11 +98,6 @@ label {
 
 .label-text {
   display: none;
-}
-
-.controls h1 {
-  grid-row: 1;
-  grid-column: 1 / -1;
 }
 
 button[type="submit"] {
