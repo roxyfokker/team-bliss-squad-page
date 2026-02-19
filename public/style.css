@@ -71,7 +71,7 @@ form {
   max-width: 300px;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.6fr 0.5fr 0.5fr;
+  grid-template-rows: 0.6fr 0.8fr 0.5fr;
   @media (min-width: 678px) {
     max-width: 615px;
   }
