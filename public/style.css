@@ -93,6 +93,7 @@ label {
 }
 
 .controls form {
+button[type="submit"] {
   width: 100%;
   height: 30px;
   border-radius: 8px;
