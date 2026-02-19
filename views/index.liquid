@@ -100,10 +100,12 @@
               <li class="header-avatar">
                 <img src="{{ person.avatar }}" alt="{{ person.name }}" class="profile-pic">
               </li>
-              <li class="header-info">
+               <li class="header-info">
                 <h3>{{ person.name }}</h3>
-                {% if filterBy == 'birthdate' and person.daysUntilBirthday %}
-                  <p class="birthday-countdown">{{ person.daysUntilBirthday }} dagen tot verjaardag</p>
+                {% if currentSort == 'birthdate' or currentSort == '-birthdate' %}
+                  <p class="birthday">{{ person.birthdate }}</p>
+                {% elsif currentSort == 'birthday' and person.daysUntilBirthday %}
+                  <p class="birthday">{{ person.birthday }} dagen tot verjaardag</p>
                 {% endif %}
               </li>
             </ul>
