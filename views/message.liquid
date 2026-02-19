@@ -5,17 +5,19 @@
 </nav>
 
 <section class="berichten-container">
-    <!--Berichten die binnen komne-->
-    <h2>Huidige berichten</h2>
-    <ol>
-        {% for message in messages %}
-        <li>
-            <strong>{{ message.from }}:</strong>{{ message.text }}
-        </li>
-        {%endfor %}
-    </ol>
-
-    <!--formulier om bericht toe te voegen-->
+    <section class="berichten-child-container">
+       <!--Berichten die binnen komne-->
+        <h2>Huidige berichten:</h2>
+        <ol>
+            {% for message in messages %}
+            <li>
+                <strong>{{ message.from }}:</strong>{{ message.text }}
+            </li>
+            {%endfor %}
+        </ol> 
+    </section>
+    <section class="berichten-child-container">
+        <!--formulier om bericht toe te voegen-->
     <h2>Voeg een bericht toe</h2>
     <form method="POST" action="/berichten" class="bericht-container">
         <label>
@@ -28,5 +30,6 @@
         </label>
         <button type="submit">Verstuur</button>
     </form>
+    </section>
 </section>
 
