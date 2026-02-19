@@ -4,7 +4,7 @@
   <a href="/">&lt; Terug
 </nav>
 
-<article class="Card" style="--fav-color: {{ person.fav_color }}">
+<figure class="Card" style="--fav-color: {{ person.fav_color }}">
   <img
     class="avatar"
     src="{% if person.mugshot %}https://fdnd.directus.app/assets/{{ person.mugshot }}{% else %}/images/missing-mugshot.png{% endif %}"
@@ -12,28 +12,32 @@
     width="300"
   >
   <h1>{{ person.name }}</h1>
-  <dl class="card-data">
-    <dt>Leeftijd:</dt>
-    <dd> 
-      {% assign birthyear = person.birthdate | date: "%Y" | plus: 0 %}
-      {% assign currentyear = "now" | date: "%Y" | plus: 0 %}
-      {% assign age = currentyear | minus: birthyear %}
-      {{ age }} jaar
-    </dd>
+  </figure>
 
-    <dt>Squad:</dt>
-    <dd>{{ person.squad }}</dd>
+  <article class="person-info-blok info-container" style="--fav-color: {{ person.fav_color }}">
+    <dl class="card-data">
+      <dt>Leeftijd:</dt>
+      <dd> 
+        {% assign birthyear = person.birthdate | date: "%Y" | plus: 0 %}
+        {% assign currentyear = "now" | date: "%Y" | plus: 0 %}
+        {% assign age = currentyear | minus: birthyear %}
+        {{ age }} jaar
+      </dd>
 
-    <dt>Role:</dt>
-    <dd>{% for r in person.role %}
-    {{ r.role_id.name }}
-  {% endfor %}
-    </dd>
+      <dt>Squad:</dt>
+      <dd>{{ person.squad }}</dd>
 
-    <dt>Bio:</dt>
-    <dd>{{ person.bio }}</dd>
-  </dl>
-</article>
+      <dt>Role:</dt>
+      <dd>{% for r in person.role %}
+          {{ r.role_id.name }}
+          {% endfor %}
+      </dd>
+
+      <dt>Bio:</dt>
+      <dd>{{ person.bio }}</dd>
+    </dl>
+  </article>
+
 
 <section class="person-info-blok spotify-container" style="--fav-color: {{ person.fav_color }}"> <!--https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed-->
   <h2>Favoriete spotify track</h2>
@@ -68,7 +72,7 @@
 <section class="person-info-blok avatar-container" style="--fav-color: {{ person.fav_color }}">
   <h2>avatar en nickanme</h2>
   <figure>
-    <img src="{{  person.avatar  }}" alt="">
+    <img src="{% if person.avatar != blank %}{{ person.avatar }}{% else %}/images/missing-mugshot.png{% endif %}" alt="">
     <figcaption>{{  person.nickname  }}</figcaption>
   </figure>
 </section>

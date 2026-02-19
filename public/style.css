@@ -9,6 +9,10 @@
   scroll-behavior: smooth;
 }
 
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
 ul,
 ol {
   list-style: none;
@@ -151,11 +155,9 @@ header {
   width: 80vw;
   margin: auto;
   background: white;
-  padding: 24px;
+  padding: 1.5rem;
   border-radius: var(--border-radius);
-  display: grid;
-  gap: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-shadow:  0 0.625rem 1.5625rem rgba(0, 0, 0, 0.08);
   outline: 0.19rem solid var(--fav-color);
   text-align: center;
 }
@@ -178,20 +180,20 @@ header {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-/*---berichten -----*/
-
-.bericht-container {
-  textarea {
-    height: 100px;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-  }
-
-  .bericht {
-    margin-top: 10px;
+.info-container{
+  dl{
     display: grid;
-    gap: 10px;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 1rem;
+    margin: 0 auto;
+    text-align: left;
+    width: fit-content;
+    dd{
+      &:last-of-type{
+        grid-column: 1 / -1;
+        line-height: 1.5;
+      }
+    }
   }
 }
 
