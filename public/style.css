@@ -315,10 +315,16 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .member-content li {
   width: 100%;
+  display: none;
+}
+
+.member-content li.active {
+  display: block;
 }
 
 .member-content .content-image {
@@ -327,6 +333,33 @@ input {
   display: block;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+}
+
+.slideshow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+.slideshow-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slideshow-btn.prev {
+  left: 5px;
+}
+
+.slideshow-btn.next {
+  right: 5px;
 }
 
 /* knoppen section */
@@ -442,6 +475,95 @@ input {
       }
     }
   }
+}
+
+/*---- slideshow ----*/
+.slideshow-container {
+  width: 80vw;
+  margin: 1rem auto;
+  position: relative;
+  border: 0.19rem solid var(--fav-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.slideshow-slide {
+  display: none;
+  width: 100%;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 1rem;
+  animation: fadeIn 0.5s;
+}
+
+.slideshow-slide.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slideshow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+.slideshow-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slideshow-btn.prev {
+  left: 10px;
+}
+
+.slideshow-btn.next {
+  right: 10px;
+}
+
+.slideshow-dots {
+  text-align: center;
+  padding: 12px 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: var(--fav-color);
+}
+
+.dot:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /*---- foot.liquid ----*/

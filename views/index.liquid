@@ -100,7 +100,7 @@
               <li class="header-avatar">
                 <img src="{{ person.avatar }}" alt="{{ person.name }}" class="profile-pic">
               </li>
-               <li class="header-info">
+              <li class="header-info">
                 <h3>{{ person.name }}</h3>
                 {% if currentSort == 'birthdate' or currentSort == '-birthdate' %}
                   <p class="birthday">{{ person.birthdate }}</p>
@@ -110,11 +110,38 @@
               </li>
             </ul>
 
-            <!-- Content -->
-            <ul class="member-content">
-              <li>
+            <!-- Slideshowtje -->
+            <ul class="member-content" data-slideshow>
+              <li class="slideshow-slide active">
                 <img src="{{ person.avatar }}" alt="{{ person.name }}" class="content-image">
               </li>
+              <li class="slideshow-slide">
+                <iframe
+                  title="Locatie {{ person.residency }}"
+                  class="embed-map-frame"
+                  frameborder="0"
+                  scrolling="no"
+                  marginheight="0"
+                  marginwidth="0"
+                  src="https://maps.google.com/maps?width=600&height=400&hl=en&q={{ person.residency | url_escape }}&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                >
+                </iframe>
+              </li>
+              <li class="slideshow-slide">
+                <iframe
+                  title="Spotify track embed"
+                  class="spotify-embed"
+                  style="border-radius:12px; border: none; width: 100%; height: 100%; aspect-ratio: auto;"
+                  src="https://open.spotify.com/embed/track/{{ track_id | default: '7qBNJBQJJjQjYFZlP3IPhK?si=635574fedc974a50' }}?utm_source=generator"
+                  frameBorder="0"
+                  allowfullscreen=""
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                >
+                </iframe>
+              </li>
+              <button class="slideshow-btn prev" onclick="changeSlide(event, -1)">❮</button>
+              <button class="slideshow-btn next" onclick="changeSlide(event, 1)">❯</button>
             </ul>
 
             <!-- Actions -->
